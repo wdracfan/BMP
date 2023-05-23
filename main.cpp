@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+#include "split.h"
+
 #pragma pack(2)
 struct Header {
     uint16_t type; // 2
@@ -85,4 +87,8 @@ int main() {
     Info info;
     file.read((char *)(&info), hdr.offbits - 14);
     info.Print(hdr.offbits - 14);
+
+    // тестирование утилиты split
+    SplitByCount("test/testfile.txt", 5);
+    SplitBySize("test/test2.bmp", 200000);
 }
